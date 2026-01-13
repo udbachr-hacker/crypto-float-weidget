@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+# Activation codes and hashes (if you want to keep them private)
+activation_codes.txt
+valid_hashes.json
+# Build artifacts
+out/
+release/

@@ -1,0 +1,172 @@
+/* Basic reset and font size reduction */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    font-size: 14px;
+}
+
+.widget-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space between content and settings */
+    background: rgba(10, 10, 15, 0.9);
+    height: 100vh;
+    padding: 0 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    -webkit-app-region: drag;
+}
+
+/* Single Pair Container */
+.single-pair-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pair-item {
+    display: flex;
+    align-items: center;
+    animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ticker-symbol {
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-right: 5px;
+}
+
+.ticker-price {
+    color: #f0d575;
+    font-weight: 600;
+}
+
+.loading-text {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Settings Icon */
+.settings-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.5;
+    -webkit-app-region: no-drag;
+    z-index: 10;
+}
+
+.settings-icon:hover {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.95);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-app-region: no-drag;
+    border-radius: 16px;
+}
+
+.modal-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.settings-list {
+    width: 100%;
+    max-height: 80px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+.remove-btn {
+    cursor: pointer;
+    color: #ff6b6b;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.add-coin-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#new-coin-input {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#add-coin-btn {
+    background: #f0d575;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: 5px;
+    cursor: pointer;
+    width: 25px;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+}

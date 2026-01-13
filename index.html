@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Widget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="widget-container">
+        <!-- Single Pair Display -->
+        <div id="single-pair-container" class="single-pair-container">
+            <!-- Content injected by JS -->
+            <span class="loading-text">Loading...</span>
+        </div>
+
+        <div class="settings-icon" id="settings-btn">⚙️</div>
+
+        <!-- Settings Modal -->
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Manage Coins</h3>
+                <div id="settings-list" class="settings-list"></div>
+                <div class="add-coin-row">
+                    <input type="text" id="new-coin-input" placeholder="Symbol (e.g. DOGE)">
+                    <button id="add-coin-btn">+</button>
+                </div>
+                <button id="close-settings-btn" class="close-btn">Done</button>
+            </div>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>

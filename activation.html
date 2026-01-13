@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Application Activation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            user-select: none;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Activation Required</h2>
+        <p>Please enter your product activation code.</p>
+        <input type="text" id="code-input" placeholder="XXXX-XXXX-XXXX-XXXX" />
+        <button id="activate-btn">Activate Application</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        const input = document.getElementById('code-input');
+        const btn = document.getElementById('activate-btn');
+        const msg = document.getElementById('message');
+
+        btn.addEventListener('click', () => {
+            const code = input.value.trim();
+            if (!code) {
+                msg.textContent = 'Please enter a code.';
+                return;
+            }
+            // Disable button
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+            msg.textContent = '';
+
+            // Send to main process
+            ipcRenderer.send('try-activate', code);
+        });
+
+        ipcRenderer.on('activation-failed', (event, message) => {
+            msg.textContent = message || 'Invalid activation code.';
+            btn.disabled = false;
+            btn.textContent = 'Activate Application';
+        });
+
+        // Success is handled by the main window closing this and opening the app, 
+        // but we can listen just in case.
+    </script>
+</body>
+</html>
